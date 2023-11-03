@@ -11,8 +11,8 @@ package Laboratorio2;
 public class GUI extends javax.swing.JFrame {
 
     
-    String ColumnNames[] = {"Codigo Estudiantil","Primer Apellido","Primer Nombre","Semestre en curso","N1","N2","N3","N4","N5"};
-    String Lista[][] = new String[100][ColumnNames.length];
+    String columnNames[] = {"Codigo Estudiantil","Primer Apellido","Primer Nombre","Semestre en curso","N1","N2","N3","N4","N5"};
+    String lista[][] = new String[100][columnNames.length];
     
     /**
      * Creates new form GUI
