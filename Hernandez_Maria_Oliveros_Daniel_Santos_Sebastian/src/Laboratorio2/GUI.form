@@ -181,11 +181,13 @@
                           <Component id="textoNota3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="tituloNota4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="textoNota4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="tituloNota5" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="textoNota5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="tituloNota4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="textoNota4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="textoNota5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">

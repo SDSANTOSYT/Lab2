@@ -222,6 +222,5 @@ public class Metodos {
         DefaultTableModel table = new DefaultTableModel(Aux, nombresColumnas);
         tabla.setModel(table);
     }
-    
-    
+
 }
