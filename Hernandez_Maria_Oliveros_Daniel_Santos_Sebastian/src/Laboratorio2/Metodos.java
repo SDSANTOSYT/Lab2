@@ -1,5 +1,8 @@
 package Laboratorio2;
 
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author sdsantos
@@ -134,10 +137,11 @@ public class Metodos {
     }
 
     /**
+     * Función que devuelve el tamaño minimo entre dos cadenas
      *
      * @param cad1
      * @param cad2
-     * @return
+     * @return menor tamaño de las dos cadenas
      */
     public int tamMinimo(String cad1, String cad2) {
         int tam1 = cad1.length();
@@ -149,6 +153,13 @@ public class Metodos {
         }
     }
 
+    /**
+     * Función que compara dos cadenas y dice si se deben intercambiar
+     *
+     * @param cad1
+     * @param cad2
+     * @return 1 si se no se intercambian, 2 si se tienen que intercambiar
+     */
     public int compararCadenas(String cad1, String cad2) {
         int n = tamMinimo(cad1, cad2);
         int i = 0;
@@ -170,4 +181,46 @@ public class Metodos {
         }
         return 1;
     }
+
+    /**
+     * Función que realiza el ordenamiento de la matriz
+     *
+     * @param Prin Matriz
+     * @param n filas de la matriz
+     * @param m columnas de la matriz
+     */
+    public void ordenamientoMatriz(String[][] Prin, int n, int m) {
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i; j++) {
+                if (compararCadenas(Prin[j][1], Prin[j + 1][1]) == 2) {
+                    for (int k = 0; k < m; k++) {
+                        String t = Prin[j][k];
+                        Prin[j][k] = Prin[j + 1][k];
+                        Prin[j + 1][k] = t;
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Función que copia la información de la matriz a una tabla y la muestra
+     *
+     * @param tabla la table en el frame donde se va a mostrar
+     * @param Prin Matriz de donde se sacan los datos
+     * @param n numero de filas que tiene la matriz de los datos
+     * @param nombresColumnas vector con los nombres de las columnas que tienen
+     * los datos
+     */
+    public void actualizarTabla(JTable tabla, String[][] Prin, int n, String[] nombresColumnas) {
+        String Aux[][] = new String[n][nombresColumnas.length];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < nombresColumnas.length; j++) {
+                Aux[i][j] = Prin[i][j];
+            }
+        }
+        DefaultTableModel table = new DefaultTableModel(Aux, nombresColumnas);
+        tabla.setModel(table);
+    }
+
 }
