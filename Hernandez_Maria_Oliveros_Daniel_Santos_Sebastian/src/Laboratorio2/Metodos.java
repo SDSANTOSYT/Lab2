@@ -240,12 +240,12 @@ public class Metodos {
 
     /**
      *
-     * @param aux matriz auxiliar que almacena estudiantes con notas NOT de SOLO
+     * @param Aux matriz auxiliar que almacena estudiantes con notas NOT de SOLO
      * de sus semestres.
      * @param Prin Matriz Principal
      * @param s Semestre a buscar, si no deseas utilizar este parametro como condicion ingrese 0.
      * @param n Dimension de filas de la matriz principal
-     * @param Not Nota minima para agregar a la matriz auxiliar.
+     * @param not Nota minima para agregar a la matriz auxiliar.
      * @param Direc Si es true toma las notas mayores a la nota ingresada, si es false toma notas menores a la nota ingresada.
      */
     public void llenarMatrizAuxNotas(String Aux[][], String Prin[][], int s, int n, int not, boolean Direc) {
