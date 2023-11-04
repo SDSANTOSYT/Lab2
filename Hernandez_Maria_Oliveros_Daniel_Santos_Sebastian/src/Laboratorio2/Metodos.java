@@ -185,18 +185,18 @@ public class Metodos {
     /**
      * Función que realiza el ordenamiento de la matriz
      *
-     * @param M Matriz
+     * @param Prin Matriz
      * @param n filas de la matriz
      * @param m columnas de la matriz
      */
-    public void ordenamientoMatriz(String[][] M, int n, int m) {
+    public void ordenamientoMatriz(String[][] Prin, int n, int m) {
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i; j++) {
-                if (compararCadenas(M[j][1], M[j + 1][1]) == 2) {
+                if (compararCadenas(Prin[j][1], Prin[j + 1][1]) == 2) {
                     for (int k = 0; k < m; k++) {
-                        String t = M[j][k];
-                        M[j][k] = M[j + 1][k];
-                        M[j + 1][k] = t;
+                        String t = Prin[j][k];
+                        Prin[j][k] = Prin[j + 1][k];
+                        Prin[j + 1][k] = t;
                     }
                 }
             }
@@ -207,19 +207,21 @@ public class Metodos {
      * Función que copia la información de la matriz a una tabla y la muestra
      *
      * @param tabla la table en el frame donde se va a mostrar
-     * @param M Matriz de donde se sacan los datos
+     * @param Prin Matriz de donde se sacan los datos
      * @param n numero de filas que tiene la matriz de los datos
      * @param nombresColumnas vector con los nombres de las columnas que tienen
      * los datos
      */
-    public void actualizarTabla(JTable tabla, String[][] M, int n, String[] nombresColumnas) {
-        String datosAMostrar[][] = new String[n][nombresColumnas.length];
+    public void actualizarTabla(JTable tabla, String[][] Prin, int n, String[] nombresColumnas) {
+        String Aux[][] = new String[n][nombresColumnas.length];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < nombresColumnas.length; j++) {
-                datosAMostrar[i][j] = M[i][j];
+                Aux[i][j] = Prin[i][j];
             }
         }
-        DefaultTableModel table = new DefaultTableModel(datosAMostrar, nombresColumnas);
+        DefaultTableModel table = new DefaultTableModel(Aux, nombresColumnas);
         tabla.setModel(table);
     }
+    
+    
 }
