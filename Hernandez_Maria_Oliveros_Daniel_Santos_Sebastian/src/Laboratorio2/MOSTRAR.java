@@ -6,18 +6,14 @@ package Laboratorio2;
 
 /**
  *
- * @author sdsantos
+ * @author maryj
  */
-public class GUI extends javax.swing.JFrame {
+public class MOSTRAR extends javax.swing.JFrame {
 
-    
-    String columnNames[] = {"Codigo Estudiantil","Primer Apellido","Primer Nombre","Semestre en curso","N1","N2","N3","N4","N5"};
-    String lista[][] = new String[100][columnNames.length];
-    
     /**
-     * Creates new form GUI
+     * Creates new form MOSTRAR
      */
-    public GUI() {
+    public MOSTRAR() {
         initComponents();
     }
 
@@ -30,43 +26,50 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        vertabla = new javax.swing.JButton();
+        volver = new javax.swing.JButton();
+        muestra = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        vertabla.setText("ver tabla");
-        vertabla.addActionListener(new java.awt.event.ActionListener() {
+        volver.setText("VOLVER");
+        volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vertablaActionPerformed(evt);
+                volverActionPerformed(evt);
             }
         });
+
+        muestra.setText("MOSTRAR");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(192, Short.MAX_VALUE)
-                .addComponent(vertabla)
-                .addGap(133, 133, 133))
+                .addContainerGap(199, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(muestra)
+                    .addComponent(volver))
+                .addGap(117, 117, 117))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(226, Short.MAX_VALUE)
-                .addComponent(vertabla)
-                .addGap(51, 51, 51))
+                .addContainerGap(204, Short.MAX_VALUE)
+                .addComponent(muestra)
+                .addGap(18, 18, 18)
+                .addComponent(volver)
+                .addGap(32, 32, 32))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void vertablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vertablaActionPerformed
+    private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
         // TODO add your handling code here:
-        MOSTRAR showme = new MOSTRAR ();
+        GUI  back = new GUI ();
       this.dispose();
-      showme.setVisible(true);
-    }//GEN-LAST:event_vertablaActionPerformed
+      back.setVisible(true);
+    }//GEN-LAST:event_volverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -85,25 +88,26 @@ public class GUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MOSTRAR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MOSTRAR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MOSTRAR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MOSTRAR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI().setVisible(true);
+                new MOSTRAR().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton vertabla;
+    private javax.swing.JButton muestra;
+    private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }
