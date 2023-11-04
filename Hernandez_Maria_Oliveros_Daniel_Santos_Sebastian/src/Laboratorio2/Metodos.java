@@ -54,7 +54,7 @@ public class Metodos {
      *
      * @param nota nota a validar
      * @return verdadero si la nota tiene el tamaño (3-4) y está dentro del
-     *         intervalo [0.0-5.0]
+     * intervalo [0.0-5.0]
      */
     public boolean validarNota(String nota) {
         int tam = nota.length();
@@ -100,7 +100,7 @@ public class Metodos {
      *
      * @param nombres es el nombre o apellido a validar
      * @return verdadero si el nombre/apellido tiene mas de 3 caracteres y no
-     *         tiene numeros
+     * tiene numeros
      */
     public boolean validarNombres(String nombres) {
         int tam = nombres.length();
@@ -186,8 +186,8 @@ public class Metodos {
      * Función que realiza el ordenamiento de la matriz
      *
      * @param Prin Matriz
-     * @param n    filas de la matriz
-     * @param m    columnas de la matriz
+     * @param n filas de la matriz
+     * @param m columnas de la matriz
      */
     public void ordenamientoMatriz(String[][] Prin, int n, int m) {
         for (int i = 0; i < n - 1; i++) {
@@ -206,11 +206,11 @@ public class Metodos {
     /**
      * Función que copia la información de la matriz a una tabla y la muestra
      *
-     * @param tabla           la table en el frame donde se va a mostrar
-     * @param Prin            Matriz de donde se sacan los datos
-     * @param n               numero de filas que tiene la matriz de los datos
+     * @param tabla la table en el frame donde se va a mostrar
+     * @param Prin Matriz de donde se sacan los datos
+     * @param n numero de filas que tiene la matriz de los datos
      * @param nombresColumnas vector con los nombres de las columnas que tienen
-     *                        los datos
+     * los datos
      */
     public void actualizarTabla(JTable tabla, String[][] Prin, int n, String[] nombresColumnas) {
         String Aux[][] = new String[n][nombresColumnas.length];
@@ -240,12 +240,12 @@ public class Metodos {
 
     /**
      *
-     * @param aux  matriz auxiliar que almacena estudiantes con notas NOT de SOLO de
-     *             sus semestres.
+     * @param Aux matriz auxiliar que almacena estudiantes con notas NOT de SOLO
+     * de sus semestres.
      * @param Prin Matriz Principal
-     * @param s    Semestre a buscar
-     * @param n    Dimension de filas de la matriz principal
-     * @param Not  Nota minima para agregar a la matriz auxiliar.
+     * @param s Semestre a buscar
+     * @param n Dimension de filas de la matriz principal
+     * @param not Nota minima para agregar a la matriz auxiliar.
      */
     public void mayoraDefinitivaSemestres(String Aux[][], String Prin[][], int s, int n, int not) {
         for (int i = 0; i < n; i++) {
@@ -269,9 +269,9 @@ public class Metodos {
     /**
      *
      * @param Prin Matriz principal donde se buscaran las notas del sementre
-     *             ingresado
-     * @param s    Semestre al cual se le calculara la definitiva
-     * @param n    dimension de filas de la matriz principal
+     * ingresado
+     * @param s Semestre al cual se le calculara la definitiva
+     * @param n dimension de filas de la matriz principal
      * @return
      */
     public double definitivaSemestre(String Prin[][], int s, int n) {
