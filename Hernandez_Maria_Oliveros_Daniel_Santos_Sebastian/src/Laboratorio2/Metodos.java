@@ -187,54 +187,77 @@ public class Metodos {
 
     /**
      *
-     * @param aux matriz auxiliar que almacena estudiantes con notas NOT de SOLO de sus semestres.
+     * @param aux matriz auxiliar que almacena estudiantes con notas NOT de SOLO
+     * de sus semestres.
      * @param Prin Matriz Principal
-     * @param s Semestre a buscar
+     * @param s Semestre a buscar, si no deseas utilizar este parametro como condicion ingrese 0.
      * @param n Dimension de filas de la matriz principal
      * @param Not Nota minima para agregar a la matriz auxiliar.
+     * @param Direc Si es true toma las notas mayores a la nota ingresada, si es false toma notas menores a la nota ingresada.
      */
-    public void mayoraDefinitivaSemestres(String Aux[][], String Prin[][], int s, int n, int  not) {
+    public void llenarMatrizAuxNotas(String Aux[][], String Prin[][], int s, int n, int not, boolean Direc) {
+        double izq, der, Temp;
+        int k = 0;
         for (int i = 0; i < n; i++) {
-            if (Double.parseDouble(Prin[i][3]) == s && Double.parseDouble(Prin[i][9]) >= not) {
+            if (Direc) {
+                izq = Double.parseDouble(Prin[i][9]);
+                der = not;
+            } else {
+                izq = not - 0.1;
+                der = Double.parseDouble(Prin[i][9]);
+            }
+            if(s == 0){
+            Temp = 0;
+            }else{
+            Temp = Double.parseDouble(Prin[i][3]);
+            }
+            if ( Temp == s && izq >= der) {
                 for (int j = 0; j <= 3; j++) {
-                    int k = 0;
                     if (j != 3) {
                         Aux[k][j] = Prin[i][j];
-                        k++;
                     } else {
-                        Aux[i][3] = Prin[i][9];
+                        Aux[k][3] = Prin[i][9];
                     }
-
                 }
-
+                k++;
             }
-
         }
     }
-    
+
     /**
      *
-     * @param Prin Matriz principal donde se buscaran las notas del sementre ingresado
+     * @param Prin Matriz principal donde se buscaran las notas del sementre
+     * ingresado
      * @param s Semestre al cual se le calculara la definitiva
      * @param n dimension de filas de la matriz principal
      * @return
      */
-    public double definitivaSemestre(String Prin[][],int s, int n){
+    public double definitivaSemestre(String Prin[][], int s, int n) {
         double def = 0, k = 0;
         for (int i = 0; i < n; i++) {
             if (Double.parseDouble(Prin[i][3]) == s) {
-               def += Double.parseDouble(Prin[i][9]);
-               k++;
+                def += Double.parseDouble(Prin[i][9]);
+                k++;
             }
         }
         def /= k;
-    return def;
+        return def;
     }
-    
-    
-    
-    
-    
+
+    /**
+     *
+     * @param Prin Matriz principal de donde se sacaran las definitivas.
+     * @param n dimension de las filas de la matriz.
+     * @return
+     */
+    public double definitivaGlobal(String Prin[][], int n) {
+        double def = 0, k = 0;
+        for (int i = 0; i < n; i++) {
+            def += Double.parseDouble(Prin[i][9]);
+            k++;
+        }
+        def /= k;
+        return def;
+    }
+
 }
-
-
