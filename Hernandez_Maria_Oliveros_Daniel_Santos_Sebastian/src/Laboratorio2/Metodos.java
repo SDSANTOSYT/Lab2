@@ -134,10 +134,11 @@ public class Metodos {
     }
 
     /**
+     * Función que devuelve el tamaño minimo entre dos cadenas
      *
      * @param cad1
      * @param cad2
-     * @return
+     * @return menor tamaño de las dos cadenas
      */
     public int tamMinimo(String cad1, String cad2) {
         int tam1 = cad1.length();
@@ -149,6 +150,13 @@ public class Metodos {
         }
     }
 
+    /**
+     * Función que compara dos cadenas y dice si se deben intercambiar
+     *
+     * @param cad1
+     * @param cad2
+     * @return 1 si se no se intercambian, 2 si se tienen que intercambiar
+     */
     public int compararCadenas(String cad1, String cad2) {
         int n = tamMinimo(cad1, cad2);
         int i = 0;
@@ -169,5 +177,25 @@ public class Metodos {
             return 2;
         }
         return 1;
+    }
+
+    /**
+     * Función que realiza el ordenamiento de la matriz
+     * @param M Matriz
+     * @param n filas de la matriz
+     * @param m columnas de la matriz
+     */
+    public void ordenamientoMatriz(String[][] M, int n, int m) {
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i; j++) {
+                if (compararCadenas(M[j][1], M[j + 1][1]) == 2) {
+                    for (int k = 0; k < m; k++) {
+                        String t = M[j][k];
+                        M[j][k] = M[j + 1][k];
+                        M[j + 1][k] = t;
+                    }
+                }
+            }
+        }
     }
 }
