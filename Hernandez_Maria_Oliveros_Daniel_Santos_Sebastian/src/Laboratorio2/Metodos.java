@@ -1,5 +1,8 @@
 package Laboratorio2;
 
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author sdsantos
@@ -181,6 +184,7 @@ public class Metodos {
 
     /**
      * Función que realiza el ordenamiento de la matriz
+     *
      * @param M Matriz
      * @param n filas de la matriz
      * @param m columnas de la matriz
@@ -197,5 +201,25 @@ public class Metodos {
                 }
             }
         }
+    }
+
+    /**
+     * Función que copia la información de la matriz a una tabla y la muestra
+     *
+     * @param tabla la table en el frame donde se va a mostrar
+     * @param M Matriz de donde se sacan los datos
+     * @param n numero de filas que tiene la matriz de los datos
+     * @param nombresColumnas vector con los nombres de las columnas que tienen
+     * los datos
+     */
+    public void actualizarTabla(JTable tabla, String[][] M, int n, String[] nombresColumnas) {
+        String datosAMostrar[][] = new String[n][nombresColumnas.length];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < nombresColumnas.length; j++) {
+                datosAMostrar[i][j] = M[i][j];
+            }
+        }
+        DefaultTableModel table = new DefaultTableModel(datosAMostrar, nombresColumnas);
+        tabla.setModel(table);
     }
 }
