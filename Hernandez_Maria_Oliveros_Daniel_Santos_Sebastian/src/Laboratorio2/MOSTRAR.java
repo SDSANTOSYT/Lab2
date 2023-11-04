@@ -26,50 +26,225 @@ public class MOSTRAR extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         volver = new javax.swing.JButton();
-        muestra = new javax.swing.JButton();
+        semestreBox = new javax.swing.JComboBox<>();
+        mostrarPunto4 = new javax.swing.JButton();
+        mostrarPunto5 = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        textoSemestre = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        textosemestrepromedio = new javax.swing.JTextField();
+        promedioShow = new javax.swing.JTextField();
+        textoPromedioGlobal = new javax.swing.JTextField();
+        promedioGlobalShow = new javax.swing.JTextField();
+        texto4 = new javax.swing.JLabel();
+        texto5 = new javax.swing.JLabel();
+        mostrarPunto3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        volver.setText("VOLVER");
+        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
+
+        volver.setText("Volver");
         volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 volverActionPerformed(evt);
             }
         });
 
-        muestra.setText("MOSTRAR");
+        semestreBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Primer Semestre", "Segundo Semestre", "Tercer Semestre", "Cuarto Semestre", "Quinto Semestre", "Sexto Semestre", "Septimo Semestre", "Octavo Semestre", "Noveno Semestre", "Decimo Semestre", "Onceavo Semestre", "Doceavo Semestre" }));
+
+        mostrarPunto4.setText("Mostrar estudiantes con promedio superior al semestral");
+
+        mostrarPunto5.setText("Mostrar");
+
+        textoSemestre.setBackground(new java.awt.Color(255, 255, 204));
+        textoSemestre.setText("Elija el semestre:");
+        textoSemestre.setBorder(null);
+        textoSemestre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        textoSemestre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoSemestreActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        textosemestrepromedio.setBackground(new java.awt.Color(255, 255, 204));
+        textosemestrepromedio.setText("El promedio del semestre que eligio es: ");
+        textosemestrepromedio.setBorder(null);
+        textosemestrepromedio.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        textosemestrepromedio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textosemestrepromedioActionPerformed(evt);
+            }
+        });
+
+        promedioShow.setEditable(false);
+
+        textoPromedioGlobal.setBackground(new java.awt.Color(255, 255, 204));
+        textoPromedioGlobal.setText("El promedio global es: ");
+        textoPromedioGlobal.setBorder(null);
+        textoPromedioGlobal.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        textoPromedioGlobal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoPromedioGlobalActionPerformed(evt);
+            }
+        });
+
+        promedioGlobalShow.setEditable(false);
+
+        texto4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        texto4.setText("Estudiantes por debajo del promedio global");
+
+        texto5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        texto5.setText("Estudiantes por encima del promedio según su semestre");
+
+        mostrarPunto3.setText("Mostrar estudiantes con promedio superior a 4.0");
+        mostrarPunto3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarPunto3ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Ó");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(texto5, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(mostrarPunto3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(mostrarPunto4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(53, 53, 53))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(volver))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textoSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(semestreBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(textosemestrepromedio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(promedioShow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(texto4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(mostrarPunto5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(65, 65, 65)
+                                .addComponent(textoPromedioGlobal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(promedioGlobalShow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(188, 188, 188)
+                                .addComponent(jLabel1)))
+                        .addGap(67, 67, 67)))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(texto5)
+                .addGap(18, 18, 18)
+                .addComponent(textoSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(semestreBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textosemestrepromedio, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(promedioShow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(mostrarPunto4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mostrarPunto3)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(texto4)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textoPromedioGlobal, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(promedioGlobalShow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(mostrarPunto5)
+                .addGap(32, 32, 32)
+                .addComponent(volver)
+                .addGap(14, 14, 14))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(199, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(muestra)
-                    .addComponent(volver))
-                .addGap(117, 117, 117))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(204, Short.MAX_VALUE)
-                .addComponent(muestra)
-                .addGap(18, 18, 18)
-                .addComponent(volver)
-                .addGap(32, 32, 32))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void textoPromedioGlobalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoPromedioGlobalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textoPromedioGlobalActionPerformed
+
+    private void textosemestrepromedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textosemestrepromedioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textosemestrepromedioActionPerformed
+
+    private void textoSemestreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoSemestreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textoSemestreActionPerformed
+
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
         // TODO add your handling code here:
         GUI  back = new GUI ();
-      this.dispose();
-      back.setVisible(true);
+        this.dispose();
+        back.setVisible(true);
     }//GEN-LAST:event_volverActionPerformed
+
+    private void mostrarPunto3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarPunto3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mostrarPunto3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,7 +282,22 @@ public class MOSTRAR extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton muestra;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JButton mostrarPunto3;
+    private javax.swing.JButton mostrarPunto4;
+    private javax.swing.JButton mostrarPunto5;
+    private javax.swing.JTextField promedioGlobalShow;
+    private javax.swing.JTextField promedioShow;
+    private javax.swing.JComboBox<String> semestreBox;
+    private javax.swing.JLabel texto4;
+    private javax.swing.JLabel texto5;
+    private javax.swing.JTextField textoPromedioGlobal;
+    private javax.swing.JTextField textoSemestre;
+    private javax.swing.JTextField textosemestrepromedio;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }
