@@ -30,9 +30,34 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fondoPanel = new javax.swing.JPanel();
+        panelFormulario = new javax.swing.JPanel();
         vertabla = new javax.swing.JButton();
+        titulo = new javax.swing.JLabel();
+        tituloCodigo = new javax.swing.JLabel();
+        textoCodigo = new javax.swing.JTextField();
+        tituloApellido = new javax.swing.JLabel();
+        textoApellido = new javax.swing.JTextField();
+        tituloNombre = new javax.swing.JLabel();
+        textoNombre = new javax.swing.JTextField();
+        tituloSemestre = new javax.swing.JLabel();
+        textoSemestre = new javax.swing.JTextField();
+        tituloNota1 = new javax.swing.JLabel();
+        textoNota1 = new javax.swing.JTextField();
+        tituloNota2 = new javax.swing.JLabel();
+        textoNota2 = new javax.swing.JTextField();
+        tituloNota3 = new javax.swing.JLabel();
+        textoNota3 = new javax.swing.JTextField();
+        tituloNota4 = new javax.swing.JLabel();
+        textoNota4 = new javax.swing.JTextField();
+        tituloNota5 = new javax.swing.JLabel();
+        textoNota5 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        fondoPanel.setBackground(new java.awt.Color(102, 153, 255));
+
+        panelFormulario.setBackground(new java.awt.Color(204, 204, 255));
 
         vertabla.setText("ver tabla");
         vertabla.addActionListener(new java.awt.event.ActionListener() {
@@ -41,21 +66,181 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        titulo.setFont(new java.awt.Font("Segoe UI Symbol", 1, 48)); // NOI18N
+        titulo.setForeground(new java.awt.Color(0, 0, 0));
+        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo.setText("CENTRO MEDICO UNINORTE");
+
+        tituloCodigo.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        tituloCodigo.setForeground(new java.awt.Color(0, 0, 0));
+        tituloCodigo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloCodigo.setText("Codigo estudiantil:");
+
+        tituloApellido.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        tituloApellido.setForeground(new java.awt.Color(0, 0, 0));
+        tituloApellido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloApellido.setText("Primer apellido:");
+
+        textoApellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoApellidoActionPerformed(evt);
+            }
+        });
+
+        tituloNombre.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        tituloNombre.setForeground(new java.awt.Color(0, 0, 0));
+        tituloNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloNombre.setText("Primer nombre:");
+
+        tituloSemestre.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        tituloSemestre.setForeground(new java.awt.Color(0, 0, 0));
+        tituloSemestre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloSemestre.setText("Semestre:");
+
+        tituloNota1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        tituloNota1.setForeground(new java.awt.Color(0, 0, 0));
+        tituloNota1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloNota1.setText("Nota 1:");
+
+        tituloNota2.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        tituloNota2.setForeground(new java.awt.Color(0, 0, 0));
+        tituloNota2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloNota2.setText("Nota 2:");
+
+        tituloNota3.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        tituloNota3.setForeground(new java.awt.Color(0, 0, 0));
+        tituloNota3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloNota3.setText("Nota 3:");
+
+        tituloNota4.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        tituloNota4.setForeground(new java.awt.Color(0, 0, 0));
+        tituloNota4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloNota4.setText("Nota 4:");
+
+        tituloNota5.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        tituloNota5.setForeground(new java.awt.Color(0, 0, 0));
+        tituloNota5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloNota5.setText("Nota 5:");
+
+        javax.swing.GroupLayout panelFormularioLayout = new javax.swing.GroupLayout(panelFormulario);
+        panelFormulario.setLayout(panelFormularioLayout);
+        panelFormularioLayout.setHorizontalGroup(
+            panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFormularioLayout.createSequentialGroup()
+                .addContainerGap(151, Short.MAX_VALUE)
+                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFormularioLayout.createSequentialGroup()
+                        .addComponent(vertabla)
+                        .addGap(25, 25, 25))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFormularioLayout.createSequentialGroup()
+                        .addComponent(titulo)
+                        .addGap(91, 91, 91))))
+            .addGroup(panelFormularioLayout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tituloSemestre)
+                    .addGroup(panelFormularioLayout.createSequentialGroup()
+                        .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(panelFormularioLayout.createSequentialGroup()
+                                .addComponent(tituloNota1)
+                                .addGap(18, 18, 18)
+                                .addComponent(textoNota1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tituloCodigo)
+                                .addComponent(tituloApellido)
+                                .addComponent(tituloNombre)))
+                        .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelFormularioLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(textoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(textoCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(textoSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(panelFormularioLayout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addComponent(tituloNota2)
+                                .addGap(18, 18, 18)
+                                .addComponent(textoNota2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(45, 45, 45)
+                                .addComponent(tituloNota3)
+                                .addGap(18, 18, 18)
+                                .addComponent(textoNota3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(45, 45, 45)
+                                .addComponent(tituloNota4)
+                                .addGap(18, 18, 18)
+                                .addComponent(textoNota4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(45, 45, 45)
+                .addComponent(tituloNota5)
+                .addGap(18, 18, 18)
+                .addComponent(textoNota5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelFormularioLayout.setVerticalGroup(
+            panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFormularioLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tituloCodigo)
+                    .addComponent(textoCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tituloApellido)
+                    .addComponent(textoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tituloNombre)
+                    .addComponent(textoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tituloSemestre)
+                    .addComponent(textoSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tituloNota1)
+                    .addComponent(textoNota1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tituloNota2)
+                    .addComponent(textoNota2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tituloNota3)
+                    .addComponent(textoNota3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tituloNota4)
+                    .addComponent(textoNota4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tituloNota5)
+                        .addComponent(textoNota5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
+                .addComponent(vertabla)
+                .addGap(34, 34, 34))
+        );
+
+        javax.swing.GroupLayout fondoPanelLayout = new javax.swing.GroupLayout(fondoPanel);
+        fondoPanel.setLayout(fondoPanelLayout);
+        fondoPanelLayout.setHorizontalGroup(
+            fondoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelFormulario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        fondoPanelLayout.setVerticalGroup(
+            fondoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelFormulario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(192, Short.MAX_VALUE)
-                .addComponent(vertabla)
-                .addGap(133, 133, 133))
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(226, Short.MAX_VALUE)
-                .addComponent(vertabla)
-                .addGap(51, 51, 51))
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -67,6 +252,10 @@ public class GUI extends javax.swing.JFrame {
       this.dispose();
       showme.setVisible(true);
     }//GEN-LAST:event_vertablaActionPerformed
+
+    private void textoApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoApellidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textoApellidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,6 +293,27 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel fondoPanel;
+    private javax.swing.JPanel panelFormulario;
+    private javax.swing.JTextField textoApellido;
+    private javax.swing.JTextField textoCodigo;
+    private javax.swing.JTextField textoNombre;
+    private javax.swing.JTextField textoNota1;
+    private javax.swing.JTextField textoNota2;
+    private javax.swing.JTextField textoNota3;
+    private javax.swing.JTextField textoNota4;
+    private javax.swing.JTextField textoNota5;
+    private javax.swing.JTextField textoSemestre;
+    private javax.swing.JLabel titulo;
+    private javax.swing.JLabel tituloApellido;
+    private javax.swing.JLabel tituloCodigo;
+    private javax.swing.JLabel tituloNombre;
+    private javax.swing.JLabel tituloNota1;
+    private javax.swing.JLabel tituloNota2;
+    private javax.swing.JLabel tituloNota3;
+    private javax.swing.JLabel tituloNota4;
+    private javax.swing.JLabel tituloNota5;
+    private javax.swing.JLabel tituloSemestre;
     private javax.swing.JButton vertabla;
     // End of variables declaration//GEN-END:variables
 }
