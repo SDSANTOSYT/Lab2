@@ -4,22 +4,28 @@
  */
 package Laboratorio2;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author sdsantos
  */
 public class GUI extends javax.swing.JFrame {
 
-    
-    String columnNames[] = {"Codigo Estudiantil","Primer Apellido","Primer Nombre","Semestre en curso","N1","N2","N3","N4","N5", "Definitiva"};
-    String lista[][] = new String[100][10];
-    String aux[][] = new String[100][4];
-    
+    String columnNames[] = {"Codigo Estudiantil", "Primer Apellido", "Primer Nombre", "Semestre en curso", "N1", "N2", "N3", "N4", "N5", "Definitiva"};
+    static int numEstudiantes = 0;
+    Metodos my = new Metodos();
+    static String lista[][] = new String[100][10];
+    static String aux[][] = new String[100][4];
+
     /**
      * Creates new form GUI
      */
     public GUI() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        my.actualizarTabla(jTable1, aux, 0, columnNames);
+
     }
 
     /**
@@ -36,12 +42,16 @@ public class GUI extends javax.swing.JFrame {
         panelFormulario = new javax.swing.JPanel();
         verTabla = new javax.swing.JButton();
         titulo = new javax.swing.JLabel();
+        labelCodigo = new javax.swing.JLabel();
         tituloCodigo = new javax.swing.JLabel();
         textoCodigo = new javax.swing.JTextField();
+        labelApellido = new javax.swing.JLabel();
         tituloApellido = new javax.swing.JLabel();
         textoApellido = new javax.swing.JTextField();
+        labelNombre = new javax.swing.JLabel();
         tituloNombre = new javax.swing.JLabel();
         textoNombre = new javax.swing.JTextField();
+        labelSemestre = new javax.swing.JLabel();
         tituloSemestre = new javax.swing.JLabel();
         textoSemestre = new javax.swing.JTextField();
         tituloNota1 = new javax.swing.JLabel();
@@ -58,6 +68,7 @@ public class GUI extends javax.swing.JFrame {
         imagen = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        ordenar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,7 +82,7 @@ public class GUI extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 591, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         panelFormulario.setBackground(new java.awt.Color(204, 204, 255));
@@ -87,53 +98,61 @@ public class GUI extends javax.swing.JFrame {
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setText("CENTRO MEDICO UNINORTE");
 
+        labelCodigo.setForeground(new java.awt.Color(153, 153, 153));
+        labelCodigo.setText("Ingrese su codigo estudiantil");
+
         tituloCodigo.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         tituloCodigo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tituloCodigo.setText("Codigo estudiantil:");
 
         textoCodigo.setForeground(new java.awt.Color(153, 153, 153));
-        textoCodigo.setText("Ingrese su codigo estudiantil");
         textoCodigo.setToolTipText("");
         textoCodigo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        textoCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textoCodigoActionPerformed(evt);
+        textoCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                textoCodigoKeyReleased(evt);
             }
         });
+
+        labelApellido.setForeground(new java.awt.Color(153, 153, 153));
+        labelApellido.setText("Ingrese su apellido");
 
         tituloApellido.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         tituloApellido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tituloApellido.setText("Primer apellido:");
 
         textoApellido.setForeground(new java.awt.Color(153, 153, 153));
-        textoApellido.setText("Ingrese su apellido");
-        textoApellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textoApellidoActionPerformed(evt);
+        textoApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                textoApellidoKeyReleased(evt);
             }
         });
+
+        labelNombre.setForeground(new java.awt.Color(153, 153, 153));
+        labelNombre.setText("Ingrese su nombre ");
 
         tituloNombre.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         tituloNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tituloNombre.setText("Primer nombre:");
 
         textoNombre.setForeground(new java.awt.Color(153, 153, 153));
-        textoNombre.setText("Ingrese su nombre ");
-        textoNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textoNombreActionPerformed(evt);
+        textoNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                textoNombreKeyReleased(evt);
             }
         });
+
+        labelSemestre.setForeground(new java.awt.Color(153, 153, 153));
+        labelSemestre.setText("Ingrese su semestre");
 
         tituloSemestre.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         tituloSemestre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tituloSemestre.setText("Semestre:");
 
         textoSemestre.setForeground(new java.awt.Color(153, 153, 153));
-        textoSemestre.setText("Ingrese su semestre");
-        textoSemestre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textoSemestreActionPerformed(evt);
+        textoSemestre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                textoSemestreKeyReleased(evt);
             }
         });
 
@@ -168,109 +187,138 @@ public class GUI extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9"
             }
         ));
         jScrollPane2.setViewportView(jTable1);
+
+        ordenar.setText("Ordenar");
+        ordenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ordenarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelFormularioLayout = new javax.swing.GroupLayout(panelFormulario);
         panelFormulario.setLayout(panelFormularioLayout);
         panelFormularioLayout.setHorizontalGroup(
             panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFormularioLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
                 .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelFormularioLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(imagen)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(verTabla)
-                        .addGap(46, 46, 46))
+                        .addGap(43, 43, 43)
+                        .addComponent(titulo))
+                    .addGroup(panelFormularioLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(tituloCodigo)
+                        .addGap(12, 12, 12)
+                        .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelFormularioLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(labelCodigo))
+                            .addComponent(textoCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelFormularioLayout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(tituloApellido)
+                        .addGap(12, 12, 12)
+                        .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelFormularioLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(labelApellido))
+                            .addComponent(textoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelFormularioLayout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(tituloNombre)
+                        .addGap(12, 12, 12)
+                        .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelFormularioLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(labelNombre))
+                            .addComponent(textoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelFormularioLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(tituloNota4)
+                        .addGap(18, 18, 18)
+                        .addComponent(textoNota4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55)
+                        .addComponent(tituloNota5)
+                        .addGap(18, 18, 18)
+                        .addComponent(textoNota5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelFormularioLayout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(tituloSemestre)
+                        .addGap(12, 12, 12)
+                        .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelFormularioLayout.createSequentialGroup()
+                                .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(49, 49, 49)
+                                .addComponent(ordenar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelFormularioLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(labelSemestre))
+                            .addComponent(textoSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelFormularioLayout.createSequentialGroup()
                         .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(textoNota3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panelFormularioLayout.createSequentialGroup()
-                                        .addGap(44, 44, 44)
-                                        .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(panelFormularioLayout.createSequentialGroup()
-                                                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(tituloNota4)
-                                                    .addComponent(tituloNota1))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(textoNota1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(textoNota4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(55, 55, 55)
-                                                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(panelFormularioLayout.createSequentialGroup()
-                                                        .addComponent(tituloNota2)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(textoNota2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(43, 43, 43)
-                                                        .addComponent(tituloNota3))
-                                                    .addGroup(panelFormularioLayout.createSequentialGroup()
-                                                        .addComponent(tituloNota5)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(textoNota5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                            .addGroup(panelFormularioLayout.createSequentialGroup()
-                                                .addGap(13, 13, 13)
-                                                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(tituloNombre)
-                                                    .addComponent(tituloApellido))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(textoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(panelFormularioLayout.createSequentialGroup()
-                                        .addGap(93, 93, 93)
-                                        .addComponent(tituloSemestre)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(textoSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(panelFormularioLayout.createSequentialGroup()
-                                        .addGap(38, 38, 38)
-                                        .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(textoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(panelFormularioLayout.createSequentialGroup()
-                                                .addComponent(tituloCodigo)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(textoCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(panelFormularioLayout.createSequentialGroup()
-                                        .addGap(219, 219, 219)
-                                        .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(panelFormularioLayout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(titulo)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)))
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(38, 38, 38)
+                                .addComponent(tituloNota1)
+                                .addGap(18, 18, 18)
+                                .addComponent(textoNota1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(55, 55, 55)
+                                .addComponent(tituloNota2)
+                                .addGap(18, 18, 18)
+                                .addComponent(textoNota2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(tituloNota3))
+                            .addComponent(imagen))
+                        .addGap(27, 27, 27)
+                        .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(verTabla)
+                            .addComponent(textoNota3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         panelFormularioLayout.setVerticalGroup(
             panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFormularioLayout.createSequentialGroup()
+            .addGroup(panelFormularioLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tituloCodigo)
+                    .addGroup(panelFormularioLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(labelCodigo))
                     .addComponent(textoCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(12, 12, 12)
+                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tituloApellido)
+                    .addGroup(panelFormularioLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(labelApellido))
                     .addComponent(textoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(12, 12, 12)
+                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tituloNombre)
+                    .addGroup(panelFormularioLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(labelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(textoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(12, 12, 12)
+                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tituloSemestre)
+                    .addComponent(labelSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textoSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
-                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tituloNota1)
                     .addComponent(textoNota1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tituloNota2)
@@ -278,22 +326,24 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(tituloNota3)
                     .addComponent(textoNota3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tituloNota4)
                     .addComponent(textoNota4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textoNota5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tituloNota5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(guardar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(tituloNota5)
+                    .addComponent(textoNota5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(guardar)
+                    .addComponent(ordenar))
                 .addGroup(panelFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFormularioLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(imagen))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFormularioLayout.createSequentialGroup()
-                        .addComponent(imagen)
-                        .addGap(14, 14, 14))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFormularioLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(verTabla)
-                        .addGap(39, 39, 39))))
-            .addComponent(jScrollPane2)
+                        .addGap(35, 35, 35))))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout fondoPanelLayout = new javax.swing.GroupLayout(fondoPanel);
@@ -302,7 +352,7 @@ public class GUI extends javax.swing.JFrame {
             fondoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoPanelLayout.createSequentialGroup()
                 .addComponent(panelFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(639, 639, 639)
+                .addGap(463, 463, 463)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -316,7 +366,9 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1044, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(fondoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,31 +379,138 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        // TODO add your handling code here:
+        String codigo = textoCodigo.getText();
+        String nombre = textoNombre.getText();
+        String apellido = textoApellido.getText();
+        String semestre = textoSemestre.getText();
+        String nota1 = textoNota1.getText();
+        String nota2 = textoNota2.getText();
+        String nota3 = textoNota3.getText();
+        String nota4 = textoNota4.getText();
+        String nota5 = textoNota5.getText();
+
+        if (my.validarCodigo(codigo) && my.validarNombres(nombre) && my.validarNombres(apellido) && my.validarSemestre(semestre) && my.validarNota(nota1) && my.validarNota(nota2) && my.validarNota(nota3) && my.validarNota(nota4) && my.validarNota(nota5) && !my.buscarElemento(lista, numEstudiantes, codigo)) {
+            lista[numEstudiantes][0] = codigo;
+            lista[numEstudiantes][1] = apellido;
+            lista[numEstudiantes][2] = nombre;
+            lista[numEstudiantes][3] = semestre;
+            lista[numEstudiantes][4] = nota1;
+            lista[numEstudiantes][5] = nota2;
+            lista[numEstudiantes][6] = nota3;
+            lista[numEstudiantes][7] = nota4;
+            lista[numEstudiantes][8] = nota5;
+            my.definitivaEstudiantes(lista, numEstudiantes);
+
+            numEstudiantes++;
+            my.actualizarTabla(jTable1, lista, numEstudiantes, columnNames);
+            textoCodigo.setText("");
+            labelCodigo.setVisible(true);
+            labelCodigo.setText("Ingrese su codigo estudiantil");
+            textoNombre.setText("");
+            labelNombre.setVisible(true);
+            labelNombre.setText("Ingrese su nombre");
+            textoApellido.setText("");
+            labelApellido.setVisible(true);
+            labelApellido.setText("Ingrese su apellido");
+            textoSemestre.setText("");
+            labelSemestre.setVisible(true);
+            labelSemestre.setText("Ingrese su semestre");
+            textoNota1.setText("");
+            textoNota2.setText("");
+            textoNota3.setText("");
+            textoNota4.setText("");
+            textoNota5.setText("");
+
+        } else {
+            if (codigo.equals("") || nombre.equals("") || apellido.equals("") || semestre.equals("") || nota1.equals("") || nota2.equals("") || nota3.equals("") || nota4.equals("") || nota5.equals("")) {
+                JOptionPane.showMessageDialog(null, "Por favor primero llena todos los campos");
+            } else {
+                if (my.buscarElemento(lista, numEstudiantes, codigo)) {
+                    JOptionPane.showMessageDialog(null, "Por favor valida el codigo estudiantil. ya existe un estudiante con este mismo codigo");
+                }
+
+                if (!my.validarCodigo(codigo)) {
+                    JOptionPane.showMessageDialog(null, "Por favor valida el codigo estudiantil. Debe tener solo numeros y ser de 8 digitos");
+                }
+                if (!my.validarNombres(nombre)) {
+                    JOptionPane.showMessageDialog(null, "Por favor valida el primer nombre, este no debe contener numeros");
+                }
+                if (!my.validarNombres(apellido)) {
+                    JOptionPane.showMessageDialog(null, "Por favor valida el primer apellido, este no debe contener numeros");
+                }
+                if (!my.validarSemestre(semestre)) {
+                    JOptionPane.showMessageDialog(null, "Por favor valida el semestre ingresado, escriba un numero del 1-12");
+                }
+                if (!my.validarNota(nota1)) {
+                    if (my.validarEntero(nota1)) {
+                        JOptionPane.showMessageDialog(null, "Por favor valida la nota 1. Debe escribirla con punto decimal");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Por favor valida la nota 1. Debe ser entre 0.0 y 5.0");
+                    }
+                }
+                if (!my.validarNota(nota2)) {
+                    if (my.validarEntero(nota2)) {
+                        JOptionPane.showMessageDialog(null, "Por favor valida la nota 2. Debe escribirla con punto decimal");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Por favor valida la nota 2. Debe ser entre 0.0 y 5.0");
+                    }
+                }
+                if (!my.validarNota(nota3)) {
+                    if (my.validarEntero(nota3)) {
+                        JOptionPane.showMessageDialog(null, "Por favor valida la nota 3. Debe escribirla con punto decimal");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Por favor valida la nota 3. Debe ser entre 0.0 y 5.0");
+                    }
+                }
+                if (!my.validarNota(nota4)) {
+                    if (my.validarEntero(nota4)) {
+                        JOptionPane.showMessageDialog(null, "Por favor valida la nota 4. Debe escribirla con punto decimal");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Por favor valida la nota 4. Debe ser entre 0.0 y 5.0");
+                    }
+                }
+                if (!my.validarNota(nota5)) {
+                    if (my.validarEntero(nota5)) {
+                        JOptionPane.showMessageDialog(null, "Por favor valida la nota 5. Debe escribirla con punto decimal");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Por favor valida la nota 5. Debe ser entre 0.0 y 5.0");
+                    }
+                }
+            }
+        }
     }//GEN-LAST:event_guardarActionPerformed
-
-    private void textoSemestreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoSemestreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textoSemestreActionPerformed
-
-    private void textoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textoNombreActionPerformed
-
-    private void textoApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoApellidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textoApellidoActionPerformed
-
-    private void textoCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textoCodigoActionPerformed
 
     private void verTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTablaActionPerformed
         // TODO add your handling code here:
-        MOSTRAR showme = new MOSTRAR ();
+        MOSTRAR showme = new MOSTRAR();
 
         showme.setVisible(true);
     }//GEN-LAST:event_verTablaActionPerformed
+
+    private void textoCodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoCodigoKeyReleased
+        String mensaje = "Ingrese su codigo estudiantil";
+        my.showLabel(textoCodigo, labelCodigo, mensaje);
+    }//GEN-LAST:event_textoCodigoKeyReleased
+
+    private void textoApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoApellidoKeyReleased
+        String mensaje = "Ingrese su apellido";
+        my.showLabel(textoApellido, labelApellido, mensaje);
+    }//GEN-LAST:event_textoApellidoKeyReleased
+
+    private void textoNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoNombreKeyReleased
+        String mensaje = "Ingrese su nombre";
+        my.showLabel(textoNombre, labelNombre, mensaje);
+    }//GEN-LAST:event_textoNombreKeyReleased
+
+    private void textoSemestreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoSemestreKeyReleased
+        String mensaje = "Ingrese su semestre";
+        my.showLabel(textoSemestre, labelSemestre, mensaje);
+    }//GEN-LAST:event_textoSemestreKeyReleased
+
+    private void ordenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordenarActionPerformed
+        my.ordenamientoMatriz(lista, numEstudiantes, 10);
+        my.actualizarTabla(jTable1, lista, numEstudiantes, columnNames);
+    }//GEN-LAST:event_ordenarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -395,6 +554,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel labelApellido;
+    private javax.swing.JLabel labelCodigo;
+    private javax.swing.JLabel labelNombre;
+    private javax.swing.JLabel labelSemestre;
+    private javax.swing.JButton ordenar;
     private javax.swing.JPanel panelFormulario;
     private javax.swing.JTextField textoApellido;
     private javax.swing.JTextField textoCodigo;

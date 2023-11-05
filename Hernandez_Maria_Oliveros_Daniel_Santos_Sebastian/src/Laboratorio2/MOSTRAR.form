@@ -176,6 +176,9 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="semestreBoxActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -184,16 +187,23 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Mostrar estudiantes con promedio superior al semestral"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mostrarPunto4ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="mostrarPunto5">
           <Properties>
             <Property name="text" type="java.lang.String" value="Mostrar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mostrarPunto5ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator1">
         </Component>
         <Component class="javax.swing.JTextField" name="textoSemestre">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="ff" red="ff" type="rgb"/>
             </Property>
@@ -205,9 +215,6 @@
               <Color id="Text Cursor"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoSemestreActionPerformed"/>
-          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
           <AuxValues>
@@ -232,6 +239,7 @@
         </Container>
         <Component class="javax.swing.JTextField" name="textosemestrepromedio">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="ff" red="ff" type="rgb"/>
             </Property>
@@ -243,9 +251,6 @@
               <Color id="Text Cursor"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textosemestrepromedioActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="promedioShow">
           <Properties>
@@ -254,6 +259,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="textoPromedioGlobal">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="ff" red="ff" type="rgb"/>
             </Property>
@@ -265,9 +271,6 @@
               <Color id="Text Cursor"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoPromedioGlobalActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="promedioGlobalShow">
           <Properties>

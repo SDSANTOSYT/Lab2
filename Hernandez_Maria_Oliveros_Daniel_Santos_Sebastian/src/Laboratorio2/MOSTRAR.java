@@ -4,17 +4,29 @@
  */
 package Laboratorio2;
 
+import static Laboratorio2.GUI.aux;
+import static Laboratorio2.GUI.lista;
+import static Laboratorio2.GUI.numEstudiantes;
+
 /**
  *
  * @author maryj
  */
 public class MOSTRAR extends javax.swing.JFrame {
 
+    Metodos my = new Metodos();
+    float nota;
+    int opcion;
+    String[] nombresColumnas1 = {"Codigo", "Primer apellido", "Primer nombre", "Nota definitiva"};
+
     /**
      * Creates new form MOSTRAR
      */
     public MOSTRAR() {
         initComponents();
+        my.actualizarTabla(jTable1, lista, 0, nombresColumnas1);
+        promedioGlobalShow.setText(String.valueOf(my.definitivaGlobal(lista, numEstudiantes)));
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -56,20 +68,31 @@ public class MOSTRAR extends javax.swing.JFrame {
         });
 
         semestreBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Primer Semestre", "Segundo Semestre", "Tercer Semestre", "Cuarto Semestre", "Quinto Semestre", "Sexto Semestre", "Septimo Semestre", "Octavo Semestre", "Noveno Semestre", "Decimo Semestre", "Onceavo Semestre", "Doceavo Semestre" }));
+        semestreBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                semestreBoxActionPerformed(evt);
+            }
+        });
 
         mostrarPunto4.setText("Mostrar estudiantes con promedio superior al semestral");
+        mostrarPunto4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarPunto4ActionPerformed(evt);
+            }
+        });
 
         mostrarPunto5.setText("Mostrar");
+        mostrarPunto5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarPunto5ActionPerformed(evt);
+            }
+        });
 
+        textoSemestre.setEditable(false);
         textoSemestre.setBackground(new java.awt.Color(255, 255, 204));
         textoSemestre.setText("Elija el semestre:");
         textoSemestre.setBorder(null);
         textoSemestre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        textoSemestre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textoSemestreActionPerformed(evt);
-            }
-        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -84,27 +107,19 @@ public class MOSTRAR extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable1);
 
+        textosemestrepromedio.setEditable(false);
         textosemestrepromedio.setBackground(new java.awt.Color(255, 255, 204));
         textosemestrepromedio.setText("El promedio del semestre que eligio es: ");
         textosemestrepromedio.setBorder(null);
         textosemestrepromedio.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        textosemestrepromedio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textosemestrepromedioActionPerformed(evt);
-            }
-        });
 
         promedioShow.setEditable(false);
 
+        textoPromedioGlobal.setEditable(false);
         textoPromedioGlobal.setBackground(new java.awt.Color(255, 255, 204));
         textoPromedioGlobal.setText("El promedio global es: ");
         textoPromedioGlobal.setBorder(null);
         textoPromedioGlobal.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        textoPromedioGlobal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textoPromedioGlobalActionPerformed(evt);
-            }
-        });
 
         promedioGlobalShow.setEditable(false);
 
@@ -223,28 +238,40 @@ public class MOSTRAR extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textoPromedioGlobalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoPromedioGlobalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textoPromedioGlobalActionPerformed
-
-    private void textosemestrepromedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textosemestrepromedioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textosemestrepromedioActionPerformed
-
-    private void textoSemestreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoSemestreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textoSemestreActionPerformed
-
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
         // TODO add your handling code here:
-        GUI  back = new GUI ();
+        GUI back = new GUI();
         this.dispose();
-        back.setVisible(true);
     }//GEN-LAST:event_volverActionPerformed
 
     private void mostrarPunto3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarPunto3ActionPerformed
         // TODO add your handling code here:
+        nota = 4;
+        my.llenarMatrizAuxNotas(aux, lista, opcion, numEstudiantes, nota, true, jTable1);
     }//GEN-LAST:event_mostrarPunto3ActionPerformed
+
+    private void semestreBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_semestreBoxActionPerformed
+        // TODO add your handling code here:
+        opcion = semestreBox.getSelectedIndex();
+        if (opcion == 0) {
+            nota = 0;
+        } else {
+            nota = (float) my.definitivaSemestre(lista, opcion, numEstudiantes);
+        }
+        promedioShow.setText(String.valueOf(nota));
+
+    }//GEN-LAST:event_semestreBoxActionPerformed
+
+    private void mostrarPunto4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarPunto4ActionPerformed
+        // TODO add your handling code here:
+        my.llenarMatrizAuxNotas(aux, lista, opcion, numEstudiantes, nota, true, jTable1);
+    }//GEN-LAST:event_mostrarPunto4ActionPerformed
+
+    private void mostrarPunto5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarPunto5ActionPerformed
+        // TODO add your handling code here:
+        nota = (float) my.definitivaGlobal(lista, numEstudiantes);
+        my.llenarMatrizAuxNotas(aux, lista, 0, numEstudiantes, nota, false, jTable1);
+    }//GEN-LAST:event_mostrarPunto5ActionPerformed
 
     /**
      * @param args the command line arguments

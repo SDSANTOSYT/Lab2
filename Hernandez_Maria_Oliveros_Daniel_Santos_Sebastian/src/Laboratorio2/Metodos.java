@@ -1,6 +1,9 @@
 package Laboratorio2;
 
+import java.awt.Color;
+import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -84,6 +87,9 @@ public class Metodos {
     public boolean validarSemestre(String sem) {
         int tam = sem.length();
         if (tam > 2) {
+            return false;
+        }
+        if (sem.equals("")) {
             return false;
         }
         if (!validarEntero(sem)) {
@@ -183,7 +189,7 @@ public class Metodos {
     }
 
     /**
-     * Función que realiza el ordenamiento de la matriz
+     * Subrutina que realiza el ordenamiento de la matriz
      *
      * @param Prin Matriz
      * @param n filas de la matriz
@@ -191,7 +197,7 @@ public class Metodos {
      */
     public void ordenamientoMatriz(String[][] Prin, int n, int m) {
         for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i; j++) {
+            for (int j = 0; j < n - i - 1; j++) {
                 if (compararCadenas(Prin[j][1], Prin[j + 1][1]) == 2) {
                     for (int k = 0; k < m; k++) {
                         String t = Prin[j][k];
@@ -204,7 +210,7 @@ public class Metodos {
     }
 
     /**
-     * Función que copia la información de la matriz a una tabla y la muestra
+     * Subrutina que copia la información de la matriz a una tabla y la muestra
      *
      * @param tabla la table en el frame donde se va a mostrar
      * @param Prin Matriz de donde se sacan los datos
@@ -224,9 +230,9 @@ public class Metodos {
     }
 
     /*
+     * Subrutina que obtiene la definitiva de cada estudiante y la agrega a la matriz
      *
      * @param M Matriz Principal donde se guardaran las definitivas.
-     * 
      * @param i Fila del estudiante a evuluar su definitiva.
      */
     public void definitivaEstudiantes(String M[][], int i) {
@@ -239,16 +245,20 @@ public class Metodos {
     }
 
     /**
+     * Subrutina que llena una matriz auxiliar con los estudiantes que cumplen
+     * las condiciones y luego la muestra
      *
      * @param Aux matriz auxiliar que almacena estudiantes con notas NOT de SOLO
      * de sus semestres.
      * @param Prin Matriz Principal
-     * @param s Semestre a buscar, si no deseas utilizar este parametro como condicion ingrese 0.
+     * @param s Semestre a buscar, si no deseas utilizar este parametro como
+     * condicion ingrese 0.
      * @param n Dimension de filas de la matriz principal
      * @param not Nota minima para agregar a la matriz auxiliar.
-     * @param Direc Si es true toma las notas mayores a la nota ingresada, si es false toma notas menores a la nota ingresada.
+     * @param Direc Si es true toma las notas mayores a la nota ingresada, si es
+     * false toma notas menores a la nota ingresada.
      */
-    public void llenarMatrizAuxNotas(String Aux[][], String Prin[][], int s, int n, int not, boolean Direc) {
+    public void llenarMatrizAuxNotas(String Aux[][], String Prin[][], int s, int n, float not, boolean Direc, JTable tabla) {
         double izq, der, Temp;
         int k = 0;
         for (int i = 0; i < n; i++) {
@@ -259,12 +269,12 @@ public class Metodos {
                 izq = not - 0.1;
                 der = Double.parseDouble(Prin[i][9]);
             }
-            if(s == 0){
-            Temp = 0;
-            }else{
-            Temp = Double.parseDouble(Prin[i][3]);
+            if (s == 0) {
+                Temp = 0;
+            } else {
+                Temp = Double.parseDouble(Prin[i][3]);
             }
-            if ( Temp == s && izq >= der) {
+            if (Temp == s && izq >= der) {
                 for (int j = 0; j <= 3; j++) {
                     if (j != 3) {
                         Aux[k][j] = Prin[i][j];
@@ -275,15 +285,18 @@ public class Metodos {
                 k++;
             }
         }
+        String[] nombresColumnas = {"Codigo", "Primer apellido", "Primer nombre", "Nota definitiva"};
+        actualizarTabla(tabla, Aux, k, nombresColumnas);
     }
 
     /**
+     * Función que realiza el calculo de la definitiva por cada seemestre
      *
      * @param Prin Matriz principal donde se buscaran las notas del sementre
      * ingresado
      * @param s Semestre al cual se le calculara la definitiva
      * @param n dimension de filas de la matriz principal
-     * @return
+     * @return la nota promedio de cada semestr
      */
     public double definitivaSemestre(String Prin[][], int s, int n) {
         double def = 0, k = 0;
@@ -298,10 +311,11 @@ public class Metodos {
     }
 
     /**
+     * Función que realiza el calculo de el promedio de todos los estudiantes
      *
      * @param Prin Matriz principal de donde se sacaran las definitivas.
      * @param n dimension de las filas de la matriz.
-     * @return
+     * @return la nota promedio de todos los estudiantes
      */
     public double definitivaGlobal(String Prin[][], int n) {
         double def = 0, k = 0;
@@ -311,6 +325,42 @@ public class Metodos {
         }
         def /= k;
         return def;
+    }
+
+    /**
+     * Función que hace el efecto de aparecer y desaparecer las instrucciones
+     *
+     * @param textField el texto donde se escribe y se verifica si el usuario ha
+     * escrito algo
+     * @param label el label que muestra las instrucciones
+     * @param mensaje el mensaje que se le va a mostrar al usuario
+     */
+    public void showLabel(JTextField textField, JLabel label, String mensaje) {
+        if (textField.getText().length() == 0) {
+            label.setText(mensaje);
+            label.setVisible(true);
+        } else {
+            label.setVisible(false);
+            textField.setForeground(Color.black);
+        }
+    }
+
+    /**
+     * Función que busca que el codigo estudiantil no esté repetido en la matriz
+     *
+     * @param M matriz donde se va a buscar
+     * @param n cantidad de filas de la matriz
+     * @param elemento codigo estudiantil a buscar
+     * @return verdadero si el elemento está, falso si no está
+     */
+    public boolean buscarElemento(String[][] M, int n, String elemento) {
+        int i = 0;
+        while (i < n) {
+            if (M[i][0].equals(elemento)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
