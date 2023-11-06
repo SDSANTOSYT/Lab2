@@ -359,6 +359,7 @@ public class Metodos {
             if (M[i][0].equals(elemento)) {
                 return true;
             }
+            i++;
         }
         return false;
     }
